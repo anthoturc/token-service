@@ -1,0 +1,19 @@
+name: token-service
+region: nyc
+services:
+  - name: token-service
+    dockerfile_path: Dockerfile
+    source_dir: .
+    github:
+      branch: mainline
+      deploy_on_push: true
+      repo: anthoturc/token-service
+    health_check:
+      http_path: /api/healthz
+      port: 8080
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    routes:
+      - path: /
+      
